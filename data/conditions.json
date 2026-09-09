@@ -1,0 +1,10 @@
+[
+  { "id": "checkTokubetsu", "label": "特別警報", "hasSub": "tokubetsu" },
+  { "id": "checkAnzen", "label": "緊急安全確保", "text": "緊急安全確保" },
+  { "id": "checkJishin", "label": "地震", "hasSub": "jishin" },
+  { "id": "checkOotsunami", "label": "大津波警報", "text": "大津波警報" },
+  { "id": "checkTsunami", "label": "津波警報", "text": "津波警報" },
+  { "id": "checkNankai", "label": "南海トラフ地震臨時情報", "text": "南海トラフ地震臨時情報" },
+  { "id": "checkSanriku", "label": "北海道・三陸沖後発地震注意情報", "text": "北海道・三陸沖後発地震注意情報" },
+  { "id": "checkOther", "label": "その他", "hasSub": "other" }
+]
