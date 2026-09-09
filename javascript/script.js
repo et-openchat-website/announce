@@ -17,14 +17,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     btn.addEventListener('click', (e) => shareToLine(e.target.dataset.target));
   });
 
-  // モーダル閉じるイベント
+  // モーダル閉じるイベント設定
   document.getElementById('modalCloseBtn').addEventListener('click', hideModal);
   document.getElementById('customModal').addEventListener('click', (e) => {
     if (e.target === document.getElementById('customModal')) hideModal();
   });
 });
 
-/* モーダル表示制御関数 */
+/* --- サイト内モーダル表示制御 --- */
 function showModal(message, icon = "✅") {
   document.getElementById('modalIcon').textContent = icon;
   document.getElementById('modalMessage').textContent = message;
@@ -38,6 +38,7 @@ function showErrorModal(message) {
 function hideModal() {
   document.getElementById('customModal').classList.add('hidden');
 }
+/* --------------------------------- */
 
 async function loadAllConfig() {
   try {
@@ -93,7 +94,7 @@ async function loadAllConfig() {
     ).join('');
 
   } catch (err) {
-    showErrorModal("JSONデータの読み込みに失敗しました。`data/` フォルダ内の各ファイル構成を確認してください。");
+    showErrorModal("JSONデータの読み込みに失敗しました。data/ フォルダ内のファイルを確認してください。");
   }
 }
 
