@@ -189,7 +189,7 @@ textarea {
 
 .hidden { display: none !important; }
 
-/* サイト内カスタムモーダルのCSS */
+/* サイト内カスタムモーダルのスタイル */
 .modal-overlay {
   position: fixed;
   top: 0;
