@@ -1,0 +1,7 @@
+[
+  { "value": "region", "label": "地方区分（近畿・関東等）" },
+  { "value": "detail_region", "label": "細分化地域（北関東・山陰等）" },
+  { "value": "prefecture", "label": "都道府県（47都道府県）" },
+  { "value": "river", "label": "一級河川（全国一級水系）" },
+  { "value": "custom", "label": "その他（自由入力）" }
+]
