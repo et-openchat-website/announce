@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>緊急アナウンス文言生成ツール</title>
+<!-- css/style.css を読み込み -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+  <header><h1>提供者規制アナウンス生成ツール</h1></header>
+
+  <div class="card">
+    <div class="form-group">
+      <label class="form-label">モード</label>
+      <div class="mode-switch">
+        <label class="mode-btn"><input type="radio" name="mode" value="禁止" checked><span>🚫 禁止モード 🚫</span></label>
+        <label class="mode-btn"><input type="radio" name="mode" value="解除"><span>🟢 解除モード 🟢</span></label>
+      </div>
+    </div>
+
+    <div class="grid-2col">
+      <div class="form-group" id="groupDate">
+        <label class="form-label">日付</label>
+        <input type="date" id="targetDate">
+      </div>
+      <div class="form-group">
+        <label class="form-label">対象地域の種類</label>
+        <select id="regionType"></select>
+      </div>
+    </div>
+
+    <div class="form-group" id="groupRegion">
+      <label class="form-label">対象地域 / 河川</label>
+      <select id="regionSelect"></select>
+      <input type="text" id="customRegionInput" class="hidden" style="margin-top: 8px;" placeholder="例: ○○川流域、○○市全域 など">
+    </div>
+
+    <div class="form-group" id="groupCondition">
+      <label class="form-label">発令種別（複数選択可）</label>
+      <div class="checkbox-group" id="conditionGroup"></div>
+    </div>
+
+    <div id="tokubetsuOptions" class="form-group sub-options hidden">
+      <label class="form-label">特別警報の種別</label>
+      <div class="checkbox-group" id="tokubetsuGroup"></div>
+    </div>
+
+    <div id="jishinOptions" class="form-group sub-options hidden">
+      <label class="form-label">最大震度</label>
+      <select id="shindoSelect"></select>
+    </div>
+
+    <div id="otherOption" class="form-group sub-options hidden">
+      <label class="form-label">その他の内容</label>
+      <input type="text" id="otherInput" placeholder="例: 火山噴火、大規模停電">
+    </div>
+
+    <div class="form-group" id="groupStatus">
+      <label class="form-label">状態（複数選択可）</label>
+      <div class="checkbox-group" id="statusGroup"></div>
+    </div>
+
+    <button id="btnGenerate" class="btn-generate">文言を生成する</button>
+  </div>
+
+  <div class="card">
+    <div class="result-title">📌 メイン用</div>
+    <textarea id="mainResult" readonly placeholder="「文言を生成する」を押すとここにテキストが表示されます"></textarea>
+    <div class="btn-group">
+      <button class="action-btn btn-copy" data-target="mainResult">コピー</button>
+      <button class="action-btn btn-line" data-target="mainResult">LINEに共有</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="result-title">💬 雑談用</div>
+    <textarea id="chatResult" readonly placeholder="「文言を生成する」を押すとここにテキストが表示されます"></textarea>
+    <div class="btn-group">
+      <button class="action-btn btn-copy" data-target="chatResult">コピー</button>
+      <button class="action-btn btn-line" data-target="chatResult">LINEに共有</button>
+    </div>
+  </div>
+</div>
+
+<!-- javascript/script.js を読み込み -->
+<script src="javascript/script.js"></script>
+</body>
+</html>
