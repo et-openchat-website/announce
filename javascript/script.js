@@ -16,7 +16,28 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.querySelectorAll('.btn-line').forEach(btn => {
     btn.addEventListener('click', (e) => shareToLine(e.target.dataset.target));
   });
+
+  // モーダル閉じるイベント
+  document.getElementById('modalCloseBtn').addEventListener('click', hideModal);
+  document.getElementById('customModal').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('customModal')) hideModal();
+  });
 });
+
+/* モーダル表示制御関数 */
+function showModal(message, icon = "✅") {
+  document.getElementById('modalIcon').textContent = icon;
+  document.getElementById('modalMessage').textContent = message;
+  document.getElementById('customModal').classList.remove('hidden');
+}
+
+function showErrorModal(message) {
+  showModal(message, "⚠️");
+}
+
+function hideModal() {
+  document.getElementById('customModal').classList.add('hidden');
+}
 
 async function loadAllConfig() {
   try {
@@ -72,7 +93,7 @@ async function loadAllConfig() {
     ).join('');
 
   } catch (err) {
-    alert("JSONデータの読み込みに失敗しました。`data/` フォルダ内の各ファイル構成を確認してください。");
+    showErrorModal("JSONデータの読み込みに失敗しました。`data/` フォルダ内の各ファイル構成を確認してください。");
   }
 }
 
@@ -225,7 +246,7 @@ function generateText() {
 
   if (firstErrorElem) {
     firstErrorElem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    alert("選択されていない箇所があります");
+    showErrorModal("未選択・未入力の項目があります");
     return;
   }
 
@@ -245,14 +266,20 @@ function generateText() {
 
 function copyToClipboard(elementId) {
   const textarea = document.getElementById(elementId);
-  if (!textarea || !textarea.value) { alert("文言が生成されていません"); return; }
+  if (!textarea || !textarea.value) {
+    showErrorModal("文言が生成されていません");
+    return;
+  }
   navigator.clipboard.writeText(textarea.value)
-    .then(() => alert("コピーしました！"))
-    .catch(() => alert("コピーに失敗しました。"));
+    .then(() => showModal("クリップボードにコピーしました！"))
+    .catch(() => showErrorModal("コピーに失敗しました"));
 }
 
 function shareToLine(elementId) {
   const textarea = document.getElementById(elementId);
-  if (!textarea || !textarea.value) { alert("文言が生成されていません"); return; }
+  if (!textarea || !textarea.value) {
+    showErrorModal("文言が生成されていません");
+    return;
+  }
   window.open(`https://line.me/R/msg/text/?${encodeURIComponent(textarea.value)}`, '_blank');
 }
